@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>ask.io - Ask</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="ask.io - personal favors for the world">
+		<meta name="author" content="humb.ly">
+
+		<!-- Le styles -->
+		<link href="/css/bootstrap.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				padding-top: 20px;
+				padding-bottom: 40px;
+			}
+
+			/* Custom container */
+			.container-narrow {
+				margin: 0 auto;
+				max-width: 850px;
+			}
+			.container-narrow > hr {
+				margin: 30px 0;
+			}
+			.container-narrow h3 {
+				margin: 0 0 50px 0;
+			}
+
+			/* Main box and search button */
+			.jumbotron {
+				margin: 60px 0;
+				text-align: center;
+			}
+			.jumbotron h1 {
+				font-size: 108px;
+				line-height: 1;
+			}
+
+		</style>
+		
+		<link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+		<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		  <script src="/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<!-- Fav and touch icons -->
+		<!-- link rel="shortcut icon" href="/ico/favicon.png" -->
+	</head>
+
+	<body>
+
+		<div class="container-narrow">
+		
+			<div class="masthead">
+			  <ul class="nav nav-pills pull-right">
+				<li><a href="/">Home</a></li>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/faq.html">FAQ</a></li>
+				<li class="active"><a href="/submit.html">Ask</a></li>
+			  </ul>
+			  <h3 class="muted"><span style="color:red">ask</span>.io</h3>
+			</div>
+			
+			<p id="success" class="text-success" style="display:none">
+				<strong>Thanks!  Your favor has been submitted and we will be in touch.</strong>
+			</p>
+
+			<h1>Ask the world for a favor</h1>
+			
+			<form id="favor-form" role="form">
+			  <div class="form-group">
+				<label for="email">Email address</label>
+				<input type="email" class="form-control" id="email" placeholder="Enter email">
+			  </div>
+			  <div class="form-group">
+				<label for="favor">Your favor</label>
+				<textarea class="form-control" rows="3" id="favor"></textarea>
+			  </div>
+			  <div class="checkbox">
+				<label>
+				  <input type="checkbox" id="subscribe" value="subscribe"> Subscribe to ask.io updates
+				</label>
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+
+		</div> <!-- /container -->
+		
+		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+		<script>
+			document.onclick = function(event) {
+				if (event.target.type == "submit") {
+					var email = document.getElementById('email').value;
+					var favor = document.getElementById('favor').value;
+					var subscribed = document.getElementById('subscribe').checked;
+					
+					if (email == '' || favor == '') {
+						alert('Please fill in all fields.');
+						return false;
+					}
+					
+					var emailKey = email.toLowerCase();
+  					emailKey = email.replace(/\./g, ',');
+					
+					var favorRef = new Firebase('https://askio.firebaseIO.com/favors/' + emailKey);
+					favorRef.set({'email' : email, 'favor' : favor, 'subscribe' : subscribed}, function(error) {
+					  	if (error) {
+							alert('Data could not be submitted.' + error);
+					  	} else {
+							document.getElementById('success').style.display = "block";
+							document.getElementById('favor-form').reset();
+					  	}
+					});
+					
+					if (subscribed == true) {
+						var subscribeRef = new Firebase('https://askio.firebaseIO.com/subscribes/' + emailKey);
+						subscribeRef.set({'email' : email});
+					}
+					
+					event.preventDefault();
+				}
+			};
+		</script>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-44243910-1', 'ask.io');
+	  ga('send', 'pageview');
+
+	</script>
+	</body>
+</html>
