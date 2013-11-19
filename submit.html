@@ -32,15 +32,17 @@
 				<li><a href="/faq.html">FAQ</a></li>
 				<li class="active"><a href="/submit.html">Ask</a></li>
 			  </ul>
-			  <h3 class="muted"><span style="color:red">ask</span>.io</h3>
+			  <a href="ask.io" class="logo">
+			  	<h3 class="muted"><span style="color:red">ask</span>.io</h3>
+			  </a>
 			</div>
-			
+
 			<p id="success" class="text-success" style="display:none">
 				<strong>Thanks!  Your favor has been submitted and we will be in touch.</strong>
 			</p>
 
 			<h1>Ask the world for a favor</h1>
-			
+
 			<form id="favor-form" role="form">
 			  <div class="form-group">
 				<label for="email">Email address</label>
@@ -59,7 +61,7 @@
 			</form>
 
 		</div> <!-- /container -->
-		
+
 		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 		<script>
 			document.onclick = function(event) {
@@ -67,15 +69,15 @@
 					var email = document.getElementById('email').value;
 					var favor = document.getElementById('favor').value;
 					var subscribed = document.getElementById('subscribe').checked;
-					
+
 					if (email == '' || favor == '') {
 						alert('Please fill in all fields.');
 						return false;
 					}
-					
+
 					var emailKey = email.toLowerCase();
   					emailKey = email.replace(/\./g, ',');
-					
+
 					var favorRef = new Firebase('https://askio.firebaseIO.com/favors/' + emailKey);
 					favorRef.set({'email' : email, 'favor' : favor, 'subscribe' : subscribed}, function(error) {
 					  	if (error) {
@@ -85,12 +87,12 @@
 							document.getElementById('favor-form').reset();
 					  	}
 					});
-					
+
 					if (subscribed == true) {
 						var subscribeRef = new Firebase('https://askio.firebaseIO.com/subscribes/' + emailKey);
 						subscribeRef.set({'email' : email});
 					}
-					
+
 					event.preventDefault();
 				}
 			};

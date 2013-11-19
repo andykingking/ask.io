@@ -46,3 +46,10 @@ body {
   font-size: 30px !important;
 }
 
+.logo {
+  color: black;
+}
+.logo:hover {
+  color: black;
+  text-decoration: none;
+}

@@ -32,15 +32,17 @@
 				<li><a href="/faq.html">FAQ</a></li>
 				<li><a href="/submit.html">Ask</a></li>
 			  </ul>
-			  <h3 class="muted"><span style="color:red">ask</span>.io</h3>
+			  <a href="ask.io" class="logo">
+			  	<h3 class="muted"><span style="color:red">ask</span>.io</h3>
+			  </a>
 			</div>
-			
+
 			<p id="success" class="text-success" style="display:none">
 				<strong>Thanks!  You have been subscribed for updates on ask.io.</strong>
 			</p>
 
 			<h1>Subscribe for updates to ask.io</h1>
-			
+
 			<form id="favor-form" role="form">
 			  <div class="form-group">
 				<label for="email">Email address</label>
@@ -50,21 +52,21 @@
 			</form>
 
 		</div> <!-- /container -->
-		
+
 		<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
 		<script>
 			document.onclick = function(event) {
 				if (event.target.type == "submit") {
 					var email = document.getElementById('email').value;
-					
+
 					if (email.value == '') {
 						alert('Please fill in your email address.');
 						return false;
 					}
-					
+
 					var emailKey = email.toLowerCase();
   					emailKey = email.replace(/\./g, ',');
-					
+
 					var subscribeRef = new Firebase('https://askio.firebaseIO.com/subscribes/' + emailKey);
 					subscribeRef.set({'email' : email}, function(error) {
 					  	if (error) {
