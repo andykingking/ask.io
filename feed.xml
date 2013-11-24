@@ -4,13 +4,34 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://ask.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://ask.io" />
-<updated>2013-11-22T15:03:39-05:00</updated>
+<updated>2013-11-23T15:57:51-05:00</updated>
 <id>http://ask.io/</id>
 <author>
   <name>ask.io</name>
   <uri>http://ask.io/</uri>
   <email>mike@humb.ly</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[My sister is 26 and has been suffering from MS]]></title>
+  <link rel="alternate" type="text/html" href="http://ask.io/articles/My-sister-is-26-and-has-been-suffering-from-MS" />
+  <id>http://ask.io/articles/My-sister-is-26-and-has-been-suffering-from-MS</id>
+  <published>2013-11-25T00:00:00-05:00</published>
+  <updated>2013-11-25T00:00:00-05:00</updated>
+  <author>
+    <name>ask.io</name>
+    <uri>http://ask.io</uri>
+    <email>mike@humb.ly</email>
+  </author>
+  <content type="html">&lt;p&gt;My sister is 26 and has been suffering from MS since she was 18. Her MS is “under control” but she sometimes has trouble speaking, walking or is in a lot of pain, it just depends on the day. This has limited her ability to travel or do fun things that a normal 20 year old should be doing. She loves postcards and collects them. It would be amazing for her to get postcards from strangers all over the US and the world. Can you send her a postcard from where you’re from with a simple message?&lt;/p&gt;
+
+&lt;p&gt;Maritza Landeros
+P.O Box 232
+Junction City, OR 97448&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;http://ask.io/articles/My-sister-is-26-and-has-been-suffering-from-MS&quot;&gt;My sister is 26 and has been suffering from MS&lt;/a&gt; was originally published by ask.io at &lt;a href=&quot;http://ask.io&quot;&gt;ask.io&lt;/a&gt; on November 25, 2013.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
